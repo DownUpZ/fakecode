@@ -1,99 +1,53 @@
-<head xmlns="http://www.w3.org/1999/html">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" name="viewport">
-    <link rel="icon" href="favicon.ico">
-    <title>e码通</title>
-    <link href="css/app.3beeee47.css" rel="preload" as="style">
-    <link href="css/chunk-vendors.fec8c032.css" rel="preload" as="style">
-    <link href="js/app.8735e41c.js" rel="preload" as="script">
-    <link href="js/chunk-vendors.ecda39ab.js" rel="preload" as="script">
-    <link href="css/chunk-vendors.fec8c032.css" rel="stylesheet">
-    <link href="css/app.3beeee47.css" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="CN-ch">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+
+    <title>Title</title>
 </head>
 <body>
-<noscript><strong>We're sorry but neu-ecode-web doesn't work properly without JavaScript enabled. Please enable it to
-    continue.</strong></noscript>
-<div id="app">
+<div class="page-header">
+    <h1></h1>
+</div>
+<div class="row">
+    <div class=".col-xs-5 col-md-4"></div>
+    <div class=".col-xs-2 col-md-4">
+        <form action="pass2.html" method="get" enctype="multipart/form-data">
+            <div class="form-group">
+                <label>学号</label>
+                <input class="form-control" type="text" name="id"/>
+            </div>
+            <div class="form-group">
+                <label>你的姓名（如：张*，王*二）</label>
+                <input class="form-control" type="text" name="name"/>
+            </div>
+            <div class="form-group">
+                <label>位置（如：南湖校区南门 ）</label>
+                <input class="form-control" type="text" name="local"/>
+            </div>
 
-
-    <!--                -->
-
-    <div data-v-1db03a06="" class="header">
-        <div data-v-1db03a06="" class="header-logo">
-            <img src="img/东北大学logo.png" alt="">
-            <div data-v-1db03a06="" class="iconfont-right"><img src="img/e码通.png"></div>
-        </div>
+            <input class="btn btn-default" type="submit" value="Go"/>
+            <br/>
+        </form>
     </div>
-
+    <div class=".col-xs-5 col-md-4"></div>
 </div>
 
-<div data-v-1db03a06="" class="info-warp">
-    <div data-v-1db03a06="" class="avater"><img data-v-1db03a06=""
-                                                src="img/touxiang.png"
-                                                alt="头像加载失败"><span
-            style="
-            font-size: 60px;
-            position: absolute;
-            left: calc(50% + 45px);
-            top: calc(160px + 5vh);
-            background: #fff;
-            border-radius:100%"><img
-            src="img/dui.png" width="70" height="70"></span></div>
-
-    <div data-v-1db03a06="" class="user">
-        <div data-v-1db03a06="" class="name">夏*梓</div>
-        <div data-v-1db03a06="" class="code">1970758</div>
-    </div>
-    <div data-v-1db03a06="" class="pass">
-        <span data-v-1db03a06="">通行权限：</span>
-        <span data-v-1db03a06="" class="yes">允许</span><!---->
-        <!----></div>
-    <div data-v-1db03a06="" class="address">南湖校区南门<span data-v-1db03a06=""> 入</span></div>
-    <div data-v-1db03a06="" class="time">2021-12-26 17:17:48</div>
-</div>
-<div data-v-1db03a06="" class="footer">
-    <div data-v-1db03a06="">© 东北大学</div>
-</div>
-</div>
-</div>
-<!--<script src="js/chunk-vendors.ecda39ab.js"></script>-->
-<!--<script src="js/app.8735e41c.js"></script>-->
 </body>
-<script>
-    // (function() {
-    //   var ws = new WebSocket('ws://' + window.location.host + '/jb-server-page?reloadServiceClientId=7');
-    //
-    //   ws.onmessage = function (msg) {
-    //       if (msg.data === 'reload') {
-    //           window.location.reload();
-    //       }
-    //       if (msg.data.startsWith('update-css ')) {
-    //           var messageId = msg.data.substring(11);
-    //           var links = document.getElementsByTagName('link');
-    //           for (var i = 0; i < links.length; i++) {
-    //               var link = links[i];
-    //               if (link.rel !== 'stylesheet') continue;
-    //               var clonedLink = link.cloneNode(true);
-    //               var newHref = link.href.replace(/(&|\?)jbUpdateLinksId=\d+/, "$1jbUpdateLinksId=" + messageId);
-    //               if (newHref !== link.href) {
-    //                 clonedLink.href = newHref;
-    //               }
-    //               else {
-    //                 var indexOfQuest = newHref.indexOf('?');
-    //                 if (indexOfQuest >= 0) {
-    //                   // to support ?foo#hash
-    //                   clonedLink.href = newHref.substring(0, indexOfQuest + 1) + 'jbUpdateLinksId=' + messageId + '&' +
-    //                                     newHref.substring(indexOfQuest + 1);
-    //                 }
-    //                 else {
-    //                   clonedLink.href += '?' + 'jbUpdateLinksId=' + messageId;
-    //                 }
-    //               }
-    //               link.replaceWith(clonedLink);
-    //           }
-    //       }
-    //   };
-    // })();
 
-</script>
+</html>

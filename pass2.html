@@ -1,0 +1,169 @@
+<head xmlns="http://www.w3.org/1999/html">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" name="viewport">
+    <link rel="icon" href="favicon.ico">
+    <title>e码通</title>
+    <link href="css/app.3beeee47.css" rel="preload" as="style">
+    <link href="css/chunk-vendors.fec8c032.css" rel="preload" as="style">
+    <link href="js/app.8735e41c.js" rel="preload" as="script">
+    <link href="js/chunk-vendors.ecda39ab.js" rel="preload" as="script">
+    <link href="css/chunk-vendors.fec8c032.css" rel="stylesheet">
+    <link href="css/app.3beeee47.css" rel="stylesheet">
+</head>
+<body>
+<noscript><strong>We're sorry but neu-ecode-web doesn't work properly without JavaScript enabled. Please enable it to
+    continue.</strong></noscript>
+
+<div>
+    <div data-v-1db03a06="" class="header">
+        <div data-v-1db03a06="" class="header-logo">
+            <img src="img/东北大学logo.png" alt="">
+            <div data-v-1db03a06="" class="iconfont-right"><img src="img/e码通.png"></div>
+        </div>
+    </div>
+
+</div>
+
+<div id="app2" data-v-1db03a06="" class="info-warp">
+    <div data-v-1db03a06="" class="avater"><img id="u_image" data-v-1db03a06=""
+                                                src=""
+                                                alt="头像加载失败"><span
+            style="
+            font-size: 60px;
+            position: absolute;
+            left: calc(50% + 45px);
+            top: calc(160px + 5vh);
+            background: #fff;
+            border-radius:100%"><img
+            src="img/dui.png" width="70" height="70"></span></div>
+
+    <div data-v-1db03a06="" class="user">
+        <div data-v-1db03a06="" class="name">{{name}}</div>
+        <div data-v-1db03a06="" class="code">{{id}}</div>
+    </div>
+    <div data-v-1db03a06="" class="pass">
+        <span data-v-1db03a06="">通行权限：</span>
+        <span data-v-1db03a06="" class="yes">允许</span><!---->
+        <!----></div>
+    <div data-v-1db03a06="" class="address">{{local}}<span data-v-1db03a06=""> 入</span></div>
+    <div data-v-1db03a06="" class="time">2021-12-26 17:17:48</div>
+</div>
+<div data-v-1db03a06="" class="footer">
+    <div data-v-1db03a06="">© 东北大学</div>
+</div>
+
+<div style="line-height: 1000px">
+<input type="file" name="for_change_image" onchange="previewFile()"  />
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+<script>
+    function previewFile() {
+            // 通过标签选择器获取HTML元素
+            // var preview = document.querySelector('img');
+            var preview =document.getElementById("u_image")
+            var file = document.querySelector('input[type=file]').files[0];
+            // Js内置文件流
+            var reader = new FileReader();
+
+            // 更新img标签的src属性为图片的本地路径，就可以显示了
+            reader.onloadend = function () {
+                preview.src = reader.result;
+            }
+
+            // 图片文件不空就显示
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                // 图片文件是空的
+                preview.src = "";
+            }
+        }
+
+
+    var LocString=String(window.document.location.href);
+    function getQueryVariable(str) {
+        var rs = new RegExp("(^|)" + str + "=([^&]*)(&|$)", "gi").exec(LocString), tmp;
+        if (tmp = rs) return tmp[2];
+        return "没有这个参数";
+    }
+    axios.post('/user', {
+        firstName: 'Fred',
+        lastName: 'Flintstone'
+    })
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
+    function dateFormat(fmt, date) {
+        let ret;
+        const opt = {
+            "Y+": date.getFullYear().toString(),        // 年
+            "m+": (date.getMonth() + 1).toString(),     // 月
+            "d+": date.getDate().toString(),            // 日
+            "H+": date.getHours().toString(),           // 时
+            "M+": date.getMinutes().toString(),         // 分
+            "S+": date.getSeconds().toString()          // 秒
+            // 有其他格式化字符需求可以继续添加，必须转化成字符串
+        };
+        for (let k in opt) {
+            ret = new RegExp("(" + k + ")").exec(fmt);
+            if (ret) {
+                fmt = fmt.replace(ret[1], (ret[1].length == 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")))
+            }
+            ;
+        }
+        ;
+        return fmt;
+    }
+
+    Vue.use(VueRouter)
+    const Foo = {template: '<div>foo</div>'}
+    const Bar = {template: '<div>bar</div>'}
+
+    const routes = [
+        {path: '/foo', component: Foo},
+        {path: '/bar', component: Bar}
+    ]
+    var routerApp = new VueRouter({
+        routes // （缩写）相当于 routes: routes
+    })
+    var app = new Vue({
+        el: '#app2', // element
+        router: routerApp,
+        data: {
+            message: 'Hello Vue!',
+            id: 0,
+            name: '',
+            local: '',
+            path: "",
+            date: null,
+            image: null,
+        },
+        methods: {},
+        created: function () {
+            console.log(getQueryVariable("id"))
+            this.id = getQueryVariable("id")
+            console.log(getQueryVariable("name"))
+            this.name = decodeURI(getQueryVariable("name"))
+            console.log(getQueryVariable("local"))
+            this.local = decodeURI(getQueryVariable("local"))
+            tempData = new Date()
+            this.date = dateFormat("YYYY-mm-dd HH:MM:SS", tempData)
+            console.log(this.date)
+        }
+    })
+    Vue.use(VueRouter)
+
+</script>
+
+</body>
