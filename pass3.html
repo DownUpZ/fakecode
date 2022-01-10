@@ -1,0 +1,173 @@
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" name="viewport">
+    <link rel="icon" href="favicon.ico">
+    <title>e码通</title>
+    <link href="css/app.7a56f377.css" rel="preload" as="style">
+    <link href="css/chunk-vendors.fec8c032.css" rel="preload" as="style">
+    <link href="js/app.1b72afcd.js" rel="preload" as="script">
+    <link href="js/chunk-vendors.ecda39ab.js" rel="preload" as="script">
+    <link href="css/chunk-vendors.fec8c032.css" rel="stylesheet">
+    <link href="css/app.7a56f377.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+        <div data-v-30eea19e="" class="code-warp-green">
+            <div data-v-30eea19e="" class="header">
+                <div data-v-30eea19e="" class="header-logo">
+                    <div data-v-30eea19e="" class="iconfont iconfont-left"></div>
+                    <div data-v-30eea19e="" class="iconfont-right"><span data-v-30eea19e="" class="iconfont"></span><span data-v-30eea19e="">码通</span></div>
+                </div>
+            </div>
+            <div data-v-30eea19e="" class="info-warp">
+                <div data-v-30eea19e="" class="avater"><input type="file" id="btn_file" style="display:none" onchange="previewFile()"><img id="u_image" data-v-30eea19e="" src="" alt="点击此处更换照片" onclick="F_Open_dialog()">
+                    <span style="font-size: 60px;position: absolute;left: calc(50% + 45px);top: calc(160px + 5vh);background: #fff;border-radius:100%">
+                        <img src="img/dui.png" width="70" height="70">
+                    </span>
+                </div>
+                <div data-v-30eea19e="" class="user">
+                    <div data-v-30eea19e="" class="name">{{name}}</div>
+                    <div data-v-30eea19e="" class="code">{{id}}</div>
+                </div>
+                <div data-v-30eea19e="" class="pass"><span data-v-30eea19e="">通行权限：</span>
+                    <!----><span data-v-30eea19e="" class="yes">允许</span>
+                    <!---->
+                    <!---->
+                </div>
+                <div data-v-30eea19e="" class="address">{{local}}<span data-v-30eea19e=""> 入</span></div>
+                <div data-v-30eea19e="" class="time">{{date}}</div>
+            </div>
+            <div data-v-30eea19e="" class="footer">
+                <div data-v-30eea19e="">© 东北大学</div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+    <script>
+        function previewFile() {
+            // 通过标签选择器获取HTML元素
+            // var preview = document.querySelector('img');
+            var preview = document.getElementById("u_image")
+            var file = document.getElementById('btn_file').files[0];
+            // Js内置文件流
+            var reader = new FileReader();
+
+            // 更新img标签的src属性为图片的本地路径，就可以显示了
+            reader.onloadend = function() {
+                preview.src = reader.result;
+            }
+
+            // 图片文件不空就显示
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                // 图片文件是空的
+                preview.src = "";
+            }
+        }
+
+
+        var LocString = String(window.document.location.href);
+
+        function getQueryVariable(str) {
+            var rs = new RegExp("(^|)" + str + "=([^&]*)(&|$)", "gi").exec(LocString),
+                tmp;
+            if (tmp = rs) return tmp[2];
+            return "没有这个参数";
+        }
+
+        axios.post('/user', {
+                firstName: 'Fred',
+                lastName: 'Flintstone'
+            })
+            .then(function(response) {
+                console.log(response);
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+
+        function dateFormat(fmt, date) {
+            let ret;
+            const opt = {
+                "Y+": date.getFullYear().toString(), // 年
+                "m+": (date.getMonth() + 1).toString(), // 月
+                "d+": date.getDate().toString(), // 日
+                "H+": date.getHours().toString(), // 时
+                "M+": date.getMinutes().toString(), // 分
+                "S+": date.getSeconds().toString() // 秒
+                    // 有其他格式化字符需求可以继续添加，必须转化成字符串
+            };
+            for (let k in opt) {
+                ret = new RegExp("(" + k + ")").exec(fmt);
+                if (ret) {
+                    fmt = fmt.replace(ret[1], (ret[1].length == 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")))
+                };
+            };
+            return fmt;
+        }
+
+        Vue.use(VueRouter)
+        const Foo = {
+            template: '<div>foo</div>'
+        }
+        const Bar = {
+            template: '<div>bar</div>'
+        }
+
+        const routes = [{
+            path: '/foo',
+            component: Foo
+        }, {
+            path: '/bar',
+            component: Bar
+        }]
+        var routerApp = new VueRouter({
+            routes // （缩写）相当于 routes: routes
+        })
+        var app = new Vue({
+            el: '#app', // element
+            router: routerApp,
+            data: {
+                message: 'Hello Vue!',
+                id: 0,
+                name: '',
+                local: '',
+                path: "",
+                date: null,
+                image: null,
+            },
+            methods: {},
+            created: function() {
+                console.log(getQueryVariable("id"))
+                this.id = getQueryVariable("id")
+                console.log(getQueryVariable("name"))
+                this.name = decodeURI(getQueryVariable("name"))
+                console.log(getQueryVariable("local"))
+                this.local = decodeURI(getQueryVariable("local"))
+                tempData = new Date()
+                this.date = dateFormat("YYYY-mm-dd HH:MM:SS", tempData)
+                console.log(this.date)
+            }
+        })
+        Vue.use(VueRouter)
+    </script>
+    <!--
+    点击图片实现文件上传
+    https://www.cnblogs.com/brady-wang/p/5267489.html
+    -->
+    <script type="text/javascript">
+        function F_Open_dialog() {
+            document.getElementById("btn_file").click();
+        }
+    </script>
+</body>
+
+</html>
