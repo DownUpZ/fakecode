@@ -1,59 +1,51 @@
-<head xmlns="http://www.w3.org/1999/html">
+<html lang="">
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" name="viewport">
     <link rel="icon" href="favicon.ico">
     <title>e码通</title>
-    <link href="css/app.3beeee47.css" rel="preload" as="style">
+    <link href="css/app.7a56f377.css" rel="preload" as="style">
     <link href="css/chunk-vendors.fec8c032.css" rel="preload" as="style">
-    <link href="js/app.8735e41c.js" rel="preload" as="script">
+    <link href="js/app.1b72afcd.js" rel="preload" as="script">
     <link href="js/chunk-vendors.ecda39ab.js" rel="preload" as="script">
     <link href="css/chunk-vendors.fec8c032.css" rel="stylesheet">
-    <link href="css/app.3beeee47.css" rel="stylesheet">
+    <link href="css/app.7a56f377.css" rel="stylesheet">
 </head>
 
 <body>
-    <noscript><strong>We're sorry but neu-ecode-web doesn't work properly without JavaScript enabled. Please enable it to
-    continue.</strong></noscript>
-
-    <div>
-        <div data-v-1db03a06="" class="header">
-            <div data-v-1db03a06="" class="header-logo">
-                <img src="img/东北大学logo.png" alt="">
-                <div data-v-1db03a06="" class="iconfont-right"><img src="img/e码通.png"></div>
+    <div id="app">
+        <div data-v-30eea19e="" class="code-warp-green">
+            <div data-v-30eea19e="" class="header">
+                <div data-v-30eea19e="" class="header-logo">
+                    <div data-v-30eea19e="" class="iconfont iconfont-left"></div>
+                    <div data-v-30eea19e="" class="iconfont-right"><span data-v-30eea19e="" class="iconfont"></span><span data-v-30eea19e="">码通</span></div>
+                </div>
+            </div>
+            <div data-v-30eea19e="" class="info-warp">
+                <div data-v-30eea19e="" class="avater"><input type="file" id="btn_file" style="display:none" onchange="previewFile()"><img id="u_image" data-v-30eea19e="" src="" alt="点击此处更换照片" onclick="F_Open_dialog()">
+                    <span style="font-size: 60px;position: absolute;left: calc(50% + 45px);top: calc(160px + 5vh);background: #fff;border-radius:100%">
+                        <img src="img/dui.png" width="70" height="70">
+                    </span>
+                </div>
+                <div data-v-30eea19e="" class="user">
+                    <div data-v-30eea19e="" class="name">{{name}}</div>
+                    <div data-v-30eea19e="" class="code">{{id}}</div>
+                </div>
+                <div data-v-30eea19e="" class="pass"><span data-v-30eea19e="">通行权限：</span>
+                    <!----><span data-v-30eea19e="" class="yes">同意进校</span>
+                    <!---->
+                    <!---->
+                </div>
+                <div data-v-30eea19e="" class="address">{{local}}<span data-v-30eea19e=""> 入</span></div>
+                <div data-v-30eea19e="" class="time">{{date}}</div>
+            </div>
+            <div data-v-30eea19e="" class="footer">
+                <div data-v-30eea19e="">© 东北大学</div>
             </div>
         </div>
-
     </div>
-    <!--onclick="F_Open_dialog()"-->
-    <div id="app2" data-v-1db03a06="" class="info-warp">
-        <div data-v-1db03a06="" class="avater"><input type="file" id="btn_file" style="display:none" onchange="previewFile()"><img id="u_image" data-v-1db03a06="" src="" alt="点击此处更换照片" onclick="F_Open_dialog()"><span style="
-            font-size: 60px;
-            position: absolute;
-            left: calc(50% + 45px);
-            top: calc(160px + 5vh);
-            background: #fff;
-            border-radius:100%"><img
-            src="img/dui.png" width="70" height="70"></span></div>
-
-        <div data-v-1db03a06="" class="user">
-            <div data-v-1db03a06="" class="name">{{name}}</div>
-            <div data-v-1db03a06="" class="code">{{id}}</div>
-        </div>
-        <div data-v-1db03a06="" class="pass">
-            <span data-v-1db03a06="">通行权限：</span>
-            <span data-v-1db03a06="" class="yes">允许</span>
-            <!---->
-            <!---->
-        </div>
-        <div data-v-1db03a06="" class="address">{{local}}<span data-v-1db03a06=""> 入</span></div>
-        <div data-v-1db03a06="" class="time">{{date}}</div>
-    </div>
-    <div data-v-1db03a06="" class="footer">
-        <div data-v-1db03a06="">© 东北大学</div>
-    </div>
-
-
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/vue-router@3.5.3/dist/vue-router.js"></script>
@@ -141,7 +133,7 @@
             routes // （缩写）相当于 routes: routes
         })
         var app = new Vue({
-            el: '#app2', // element
+            el: '#app', // element
             router: routerApp,
             data: {
                 message: 'Hello Vue!',
@@ -168,12 +160,14 @@
         Vue.use(VueRouter)
     </script>
     <!--
-点击图片实现文件上传
-https://www.cnblogs.com/brady-wang/p/5267489.html
--->
+    点击图片实现文件上传
+    https://www.cnblogs.com/brady-wang/p/5267489.html
+    -->
     <script type="text/javascript">
         function F_Open_dialog() {
             document.getElementById("btn_file").click();
         }
     </script>
 </body>
+
+</html>
